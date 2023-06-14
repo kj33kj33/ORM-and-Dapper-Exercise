@@ -15,7 +15,18 @@ namespace ORM_Dapper
 
             string connString = config.GetConnectionString("DefaultConnection");
 
-            IDbConnection conn = new MySqlConnection(connString);
+            IDbConnection connection = new MySqlConnection(connString);
+
+            var repo = new DapperProductRepo(connection);
+
+            repo.CreateProduct("Diablo IV", 59.99, 8);
+
+            var products = repo.GetAllProducts();
+
+            foreach(var product in products)
+            {
+                Console.WriteLine($"{product.Name} | {product.Price}");
+            }
         }
     }
 }
