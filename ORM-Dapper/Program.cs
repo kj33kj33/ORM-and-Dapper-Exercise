@@ -19,14 +19,18 @@ namespace ORM_Dapper
 
             var repo = new DapperProductRepo(connection);
 
-            repo.CreateProduct("Diablo IV", 59.99, 8);
+            //repo.CreateProduct("Diablo IV", 59.99, 8);
 
             var products = repo.GetAllProducts();
 
             foreach(var product in products)
             {
-                Console.WriteLine($"{product.Name} | {product.Price}");
+                Console.WriteLine($"{product.Name} | {product.Price} | {product.ProductID}");
             }
+
+            //repo.DeleteProduct(940);
+
+            //repo.UpdateProductName(942, "Apple");
         }
     }
 }
